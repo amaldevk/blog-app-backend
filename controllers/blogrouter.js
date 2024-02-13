@@ -6,7 +6,7 @@ const bcrypt=require("bcryptjs")
 hashPasswordGenerator=async(pass)=>{
     const salt=await bcrypt.genSalt(10)
     return bcrypt.hash(pass,salt)
-}
+}   
 
 router.post("/signup",async(req,res)=>{
     let {data}={"data":req.body}
@@ -48,7 +48,7 @@ router.post("/signin",async(req,res)=>{
     {
         return res.json({"status":"invalid password"})
     }
-    res.json({"status":"success"})
+    res.json({"status":"success","userData":data})
 })
     
 
